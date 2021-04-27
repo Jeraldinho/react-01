@@ -1,0 +1,19 @@
+.my-posts {
+	width: 100%;
+	margin-top: 30px;
+}
+
+.write-post-form textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	resize: vertical;
+	border-radius: 0;
+	outline: none;
+	transition: 0.3s;
+	font-size: 16px;
+}
+
+.write-post-form textarea:focus {
+	border: 1px solid #262f3d;
+}

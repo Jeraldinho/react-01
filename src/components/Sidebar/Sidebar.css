@@ -1,0 +1,38 @@
+.main > .container {
+	display: grid;
+	grid-template-columns: 3fr 10fr;
+	grid-area: main;
+	grid-template-areas: "sidebar content";
+}
+
+.sidebar {
+	position: sticky;
+	grid-area: sidebar;
+	background: #262f3d;
+	margin-top: 30px;
+	margin-right: 20px;
+	padding: 30px 20px 30px;
+	height: calc(100vh - 95px);
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+.sidebar__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sidebar__link {
+	display: inline-block;
+	color: #ffffff8c;
+	text-decoration: none;
+	margin-bottom: 10px;
+	transition: 0.3s ease;
+}
+.sidebar__link.active {
+	color: #fff;
+}
+.sidebar__link:hover {
+	color: #fff;
+}

@@ -1,0 +1,22 @@
+.profile {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.avatar {
+	margin-right: 20px;
+}
+
+.user-info__item {
+	margin-bottom: 7px;
+}
+
+.user-info__name {
+	margin-bottom: 15px;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+.user-info__item span {
+	font-weight: 500;
+}

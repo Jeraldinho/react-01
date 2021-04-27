@@ -1,0 +1,26 @@
+.header {
+	display: grid;
+	align-items: center;
+	grid-area: header;
+	height: 65px;
+	background: #262f3d;
+	text-align: left;
+	box-shadow: 0 0 2rem 0 rgba(53, 64, 82, 0.3);
+}
+
+.header__logo {
+	display: flex;
+	align-items: center;
+	color: #eee;
+	text-decoration: none;
+	font-size: 24px;
+}
+
+.header__logo img {
+	display: inline-block;
+	width: 80px;
+	margin-right: 10px;
+}
+.header__logo:hover img {
+	filter: blur(1px);
+}
