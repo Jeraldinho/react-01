@@ -52,7 +52,7 @@ img {
 		"main";
 }
 
-.content {
+.app-content {
 	margin-top: 30px;
 	grid-area: content;
 }
