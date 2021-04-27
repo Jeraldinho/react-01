@@ -1,5 +1,5 @@
 import "./MyPosts.css";
-import Posts from "./Post/Post";
+import Post from "./Post/Post";
 
 const MyPosts = () => {
 	return (
@@ -20,7 +20,8 @@ const MyPosts = () => {
 			</form>
 
 			<div className="post-list">
-				<Posts />
+				<Post message="First post" likes="14" />
+				<Post message="Second post" likes="20" />
 			</div>
 		</div>
 	);

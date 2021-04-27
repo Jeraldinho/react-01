@@ -7,10 +7,7 @@ const Profile = () => {
 			<div className="profile">
 				<div className="avatar">
 					<a href="">
-						<img
-							src="https://via.placeholder.com/250x300"
-							alt="ava"
-						/>
+						<img src="https://via.placeholder.com/250x300" alt="ava" />
 					</a>
 				</div>
 

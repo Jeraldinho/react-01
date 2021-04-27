@@ -1,5 +1,19 @@
-.my-posts__title {
-	font-size: 20px;
-	font-weight: 500;
-	margin-bottom: 15px;
+.post-list__item {
+	display: flex;
+	margin-bottom: 30px;
+	flex-wrap: wrap;
+}
+
+.post-list__item-avatar {
+	display: inline-block;
+	border-radius: 50%;
+	margin-right: 15px;
+}
+
+.post-list__item-text {
+	padding-top: 5px;
+}
+
+.post-list__item-likes {
+	width: 100%;
 }
