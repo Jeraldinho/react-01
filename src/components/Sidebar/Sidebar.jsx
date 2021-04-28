@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -5,29 +6,29 @@ const Sidebar = () => {
 		<div className="sidebar">
 			<ul className="sidebar__list">
 				<li>
-					<a href="" className="sidebar__link active">
+					<NavLink to="/profile" className="sidebar__link">
 						Profile
-					</a>
+					</NavLink>
 				</li>
 				<li>
-					<a href="" className="sidebar__link">
+					<NavLink to="/dialogs" className="sidebar__link">
 						Messages
-					</a>
+					</NavLink>
 				</li>
 				<li>
-					<a href="" className="sidebar__link">
+					<NavLink to="/news" className="sidebar__link">
 						News
-					</a>
+					</NavLink>
 				</li>
 				<li>
-					<a href="" className="sidebar__link">
+					<NavLink to="/music" className="sidebar__link">
 						Music
-					</a>
+					</NavLink>
 				</li>
 				<li>
-					<a href="" className="sidebar__link">
+					<NavLink to="/settings" className="sidebar__link">
 						Settings
-					</a>
+					</NavLink>
 				</li>
 			</ul>
 		</div>
