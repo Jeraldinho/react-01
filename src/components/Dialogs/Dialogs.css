@@ -1,4 +1,64 @@
-.dialogs {
-	padding: 50px;
-	color: red;
+.dialogs__wrapper {
+	display: grid;
+	grid-template-columns: 3fr 9fr;
+}
+
+.dialogs__title {
+	font-size: 20px;
+	margin-bottom: 30px;
+	font-weight: 500;
+}
+
+.dialogs__items {
+	margin-right: 20px;
+}
+
+.dialogs__item {
+	display: block;
+	color: inherit;
+	margin-bottom: 10px;
+	text-decoration: none;
+	transition: 0.3s;
+	background: #fff;
+	padding: 5px 10px;
+	font-size: 14px;
+}
+
+.dialogs__item:hover {
+	background: #f2f6ff;
+}
+
+.dialogs__message {
+	display: flex;
+	margin-bottom: 30px;
+	align-items: flex-start;
+}
+
+.dialogs__message-avatar {
+	border-radius: 50%;
+	margin-right: 15px;
+}
+
+.dialogs__message-user-name {
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.dialogs__message-text {
+	position: relative;
+	background: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+	box-shadow: 0 4px 14px rgb(34,39,51, 0.05);
+	line-height: 1.2;
+}
+
+.dialogs__message-text:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 10px;
+	left: -20px;
+	border: 10px solid transparent; border-right: 10px solid #fff;
 }
