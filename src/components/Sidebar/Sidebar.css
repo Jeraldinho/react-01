@@ -23,16 +23,42 @@
 	list-style: none;
 }
 
-.sidebar__link {
-	display: inline-block;
-	color: #ffffff8c;
-	text-decoration: none;
+.sidebar__list-item {
 	margin-bottom: 10px;
+}
+
+.sidebar__list-item:last-child {
+	margin-top: 20px;
+}
+
+.sidebar__list-item:last-child:before {
+	content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: #627188;
+    margin-bottom: 15px;
+}
+
+.sidebar__link {
+	display: block;
+	color: #ffffff8c;
+	padding: 4px;
+	text-decoration: none;
 	transition: 0.3s ease;
 }
+
 .sidebar__link.active {
 	color: #fff;
+	background: #3e4a5f;
 }
+
 .sidebar__link:hover {
 	color: #fff;
+	background: #3e4a5f;
+}
+
+.sidebar__link .mdi {
+	margin-right: 10px;
+	color: #61dafb;
 }
