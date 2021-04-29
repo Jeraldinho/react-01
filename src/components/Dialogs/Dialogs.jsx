@@ -29,31 +29,31 @@ const Message = (props) => {
 };
 
 const Dialogs = () => {
+	let dialogsData = [
+		{id: 1, name: "Natan"},
+		{id: 2, name: "Joe"},
+		{id: 3, name: "Brandan"},
+	]
+
+	let messagesData = [
+		{id: 1, name: "Natan", message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod placeat reprehenderit, veniam nesciunt recusandae quaerat architecto unde magni sint voluptates distinctio excepturi voluptatum autem velit tenetur suscipit? Hic, ratione beatae."},
+		{id: 2, name: "Joe", message: "Lorem ipsum dolor sit, amet consectetur adipisicing elit."}
+	]
+
 	return (
 		<div className="dialogs">
 			<div className="dialogs__title">Dialogs</div>
 
 			<div className="dialogs__wrapper">
 				<div className="dialogs__items">
-					<Dialog name="Natan" id="1" />
-					<Dialog name="Joe" id="2" />
-					<Dialog name="Brandan" id="3" />
+					<Dialog name={dialogsData[0].name} id={dialogsData[0].id} />
+					<Dialog name={dialogsData[1].name} id={dialogsData[1].id} />
+					<Dialog name={dialogsData[2].name} id={dialogsData[2].id} />
 				</div>
 
 				<div className="dialogs__messages">
-					<Message
-						name="Natan"
-						message="Lorem ipsum dolor sit amet consectetur adipisicing
-					elit. Quod placeat reprehenderit, veniam nesciunt
-					recusandae quaerat architecto unde magni sint
-					voluptates distinctio excepturi voluptatum autem
-					velit tenetur suscipit? Hic, ratione beatae."
-					/>
-
-					<Message
-						name="Joe"
-						message="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
-					/>
+					<Message name={messagesData[0].name} message={messagesData[0].message} />
+					<Message name={messagesData[1].name} message={messagesData[1].message} />
 				</div>
 			</div>
 		</div>

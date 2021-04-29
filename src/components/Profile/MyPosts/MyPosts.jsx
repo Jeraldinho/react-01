@@ -2,6 +2,11 @@ import "./MyPosts.css";
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+	let postsData = [
+		{messages: "First post", likes: 14},
+		{messages: "Second post", likes: 20}
+	]
+
 	return (
 		<div className="my-posts">
 			<div className="my-posts__title">My posts</div>
@@ -20,8 +25,8 @@ const MyPosts = () => {
 			</form>
 
 			<div className="post-list">
-				<Post message="First post" likes="14" />
-				<Post message="Second post" likes="20" />
+				<Post message={postsData[0].messages} likes={postsData[0].likes} />
+				<Post message={postsData[1].messages} likes={postsData[1].likes} />
 			</div>
 		</div>
 	);
