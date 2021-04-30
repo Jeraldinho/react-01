@@ -60,5 +60,26 @@
 	position: absolute;
 	top: 10px;
 	left: -20px;
-	border: 10px solid transparent; border-right: 10px solid #fff;
+	border: 10px solid transparent;
+	border-right: 10px solid #fff;
+}
+
+.dialogs__message.from-me {
+	flex-direction: row-reverse;
+}
+
+.dialogs__message.from-me .dialogs__message-avatar {
+	margin-right: 0;
+	margin-left: 15px;
+}
+
+.dialogs__message.from-me .dialogs__message-text {
+	background: #ebf7fc;
+}
+
+.dialogs__message.from-me .dialogs__message-text:before {
+	left: auto;
+	right: -10px;
+	border-right: none;
+	border-left: 10px solid #ebf7fc;
 }

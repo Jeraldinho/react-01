@@ -7,6 +7,7 @@
 
 .sidebar {
 	position: sticky;
+	top: 30px;
 	grid-area: sidebar;
 	background: #262f3d;
 	margin-top: 30px;
@@ -17,27 +18,27 @@
 	overflow-y: auto;
 }
 
-.sidebar__list {
+.sidebar__nav-list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-.sidebar__list-item {
+.sidebar__nav-list-item {
 	margin-bottom: 10px;
 }
 
-.sidebar__list-item:last-child {
+.sidebar__nav-list-item:last-child {
 	margin-top: 20px;
 }
 
-.sidebar__list-item:last-child:before {
+.sidebar__nav-list-item:last-child:before {
 	content: "";
-    display: block;
-    height: 1px;
-    width: 100%;
-    background: #627188;
-    margin-bottom: 15px;
+	display: block;
+	height: 1px;
+	width: 100%;
+	background: #627188;
+	margin-bottom: 15px;
 }
 
 .sidebar__link {
@@ -61,4 +62,51 @@
 .sidebar__link .mdi {
 	margin-right: 10px;
 	color: #61dafb;
+}
+
+/* My Friends block */
+.sidebar__friends-block {
+	margin-top: 15px;
+}
+
+.sidebar__friends-block:before {
+	content: "";
+	display: block;
+	height: 1px;
+	width: 100%;
+	background: #627188;
+	margin-bottom: 30px;
+}
+
+.sidebar__friends-block-title {
+	font-size: 18px;
+	color: #fff;
+	margin-bottom: 20px;
+}
+
+.sidebar__friends-item {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	color: #ffffff8c;
+	text-decoration: none;
+	margin-bottom: 15px;
+	transition: 0.3s;
+}
+
+.sidebar__friends-item-avatar {
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.sidebar__friends-item-name {
+	font-size: 14px;
+}
+
+.sidebar__friends-item.active {
+	color: #fff;
+}
+
+.sidebar__friends-item:hover {
+	color: #fff;
 }

@@ -18,7 +18,7 @@ const ProfileInfo = () => {
 					<span>City:</span> New York
 				</div>
 				<div className="user-info__item user-info__edu">
-					<span>Education:</span> MGU'08
+					<span>Education:</span> MSU'08
 				</div>
 				<div className="user-info__item user-info__website">
 					<span>Web Site:</span> https://microsoft.com
