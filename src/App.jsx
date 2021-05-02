@@ -20,7 +20,7 @@ const App = (props) => {
 						<Sidebar state={props.state.sidebar} />
 
 						<div className="app-content">
-							<Route path="/profile" render={ () => <Profile state={props.state.profilePage} /> } />
+							<Route path="/profile" render={ () => <Profile state={props.state.profilePage} addPost={props.addpost} /> } />
 							<Route path="/dialogs" render={ () => <Dialogs state={props.state.dialogsPage} /> } />
 							<Route path="/news" render={News} />
 							<Route path="/music" render={Music} />

@@ -83,3 +83,18 @@
 	border-right: none;
 	border-left: 10px solid #ebf7fc;
 }
+
+.dialogs__messages-form textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	resize: vertical;
+	border-radius: 0;
+	outline: none;
+	transition: 0.3s;
+	font-size: 16px;
+}
+
+.dialogs__messages-form textarea:focus {
+	border: 1px solid #262f3d;
+}

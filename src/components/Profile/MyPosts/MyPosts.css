@@ -9,7 +9,7 @@
 	margin-bottom: 15px;
 }
 
-.write-post-form textarea {
+.post-message {
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -20,6 +20,6 @@
 	font-size: 16px;
 }
 
-.write-post-form textarea:focus {
+.post-message:focus {
 	border: 1px solid #262f3d;
 }
