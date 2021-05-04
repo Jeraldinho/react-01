@@ -1,9 +1,12 @@
+import {rerenderApp} from "./../render";
+
 let state = {
 	profilePage: {
 		posts: [
 			{ id: 1, messages: "First post", likesCount: 14 },
 			{ id: 2, messages: "Second post", likesCount: 20 },
 		],
+		newPostText: ""
 	},
 	dialogsPage: {
 		dialogs: [
@@ -14,7 +17,8 @@ let state = {
 		messages: [
 			{ id: 1, name: "Reginaldo Faria", message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod placeat reprehenderit, veniam nesciunt recusandae quaerat architecto unde magni sint voluptates distinctio excepturi voluptatum autem velit tenetur suscipit? Hic, ratione beatae." },
 			{ id: 2, name: "Neusa Borges", message: "Lorem ipsum dolor sit, amet consectetur adipisicing elit." },
-		]
+		],
+		newMessageText: ""
 	},
 	sidebar: {
 		friends: [
@@ -27,12 +31,40 @@ let state = {
 	}
 }
 
-export let addPost = (postMessage) => {
-	state.profilePage.posts.push(
-		{ id: 3, messages: postMessage, likesCount: 45 }
-	)
+window.state = state;
 
-	console.log(state.profilePage.posts);
+// On Profile page
+export let addPost = () => {
+	let newPost = {
+		id: 3,
+		messages: state.profilePage.newPostText,
+		likesCount: 45
+	}
+
+	state.profilePage.posts.push(newPost)
+	state.profilePage.newPostText = '';
+	rerenderApp(state);
+}
+export let updateNewPostText = (text) => {
+	state.profilePage.newPostText = text;
+	rerenderApp(state);
+}
+
+// On Dialogs page
+export let addMessage = () => {
+	let newMessage = {
+		id: 3,
+		name: "Vera Fischer",
+		message: state.dialogsPage.newMessageText
+	}
+
+	state.dialogsPage.messages.push(newMessage)
+	state.dialogsPage.newMessageText = '';
+	rerenderApp(state);
+}
+export let updateNewMessageText = (text) => {
+	state.dialogsPage.newMessageText = text;
+	rerenderApp(state);
 }
 
 export default state;

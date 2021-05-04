@@ -4,10 +4,10 @@ import Message from "./Message/Message";
 import React from "react";
 
 const Dialogs = (props) => {
-	let dialogsElements = props.state.dialogs.map((dialog) => (
+	let dialogsElements = props.dialogsPage.dialogs.map((dialog) => (
 		<Dialog name={dialog.name} id={dialog.id} />
 	));
-	let messagesElements = props.state.messages.map((message) => (
+	let messagesElements = props.dialogsPage.messages.map((message) => (
 		<Message name={message.name} message={message.message} />
 	));
 
@@ -15,7 +15,12 @@ const Dialogs = (props) => {
 
 	let sendMessage = () => {
 		let text = messageText.current.value;
-		alert(text);
+		props.addMessage(text);
+	}
+
+	let onChangeMessageText = () => {
+		let text = messageText.current.value;
+		props.updateNewMessageText(text);
 	}
 
 	return (
@@ -31,15 +36,15 @@ const Dialogs = (props) => {
 					<form action="" className="dialogs__messages-form">
 						<textarea
 							name="post-massage"
-							id=""
-							cols="30"
 							rows="2"
 							placeholder="Enter your message"
+							onChange={onChangeMessageText}
+							value={props.dialogsPage.newMessageText}
 							ref={messageText}
-						></textarea>
+						/>
 
 						<div className="text-right">
-							<button onClick={sendMessage} className="send-message-btn btn">
+							<button type="button" onClick={sendMessage} className="send-message-btn btn">
 								Send
 							</button>
 						</div>
