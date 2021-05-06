@@ -9,14 +9,14 @@ const MyPosts = (props) => {
 
 	let postTextarea = React.createRef();
 	let addPost = () => {
-		let messageText = postTextarea.current.value;
-		props.addPost(messageText);
+		props.dispatch({ type: "ADD-POST" });
 	};
 
 	let onPostChange = () => {
 		let text = postTextarea.current.value;
-		props.updateNewPostText(text);
-	}
+		let action = { type: "UPDATE-NEW-POST-TEXT", text }
+		props.dispatch(action);
+	};
 
 	return (
 		<div className="my-posts">

@@ -14,14 +14,14 @@ const Dialogs = (props) => {
 	let messageText = React.createRef();
 
 	let sendMessage = () => {
-		let text = messageText.current.value;
-		props.addMessage(text);
-	}
+		props.dispatch({ type: "ADD-MESSAGE" });
+	};
 
 	let onChangeMessageText = () => {
 		let text = messageText.current.value;
-		props.updateNewMessageText(text);
-	}
+		let action = { type: "UPDATE-NEW-MESSAGE-TEXT", text };
+		props.dispatch(action);
+	};
 
 	return (
 		<div className="dialogs">
@@ -44,7 +44,11 @@ const Dialogs = (props) => {
 						/>
 
 						<div className="text-right">
-							<button type="button" onClick={sendMessage} className="send-message-btn btn">
+							<button
+								type="button"
+								onClick={sendMessage}
+								className="send-message-btn btn"
+							>
 								Send
 							</button>
 						</div>

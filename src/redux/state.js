@@ -1,70 +1,90 @@
-import {rerenderApp} from "./../render";
-
-let state = {
-	profilePage: {
-		posts: [
-			{ id: 1, messages: "First post", likesCount: 14 },
-			{ id: 2, messages: "Second post", likesCount: 20 },
-		],
-		newPostText: ""
+let store = {
+	_state: {
+		profilePage: {
+			posts: [
+				{ id: 1, messages: "First post", likesCount: 14 },
+				{ id: 2, messages: "Second post", likesCount: 20 },
+			],
+			newPostText: ""
+		},
+		dialogsPage: {
+			dialogs: [
+				{ id: 1, name: "Murilo Benício" },
+				{ id: 2, name: "Giovanna Antonelli" },
+				{ id: 3, name: "Vera Fischer" },
+			],
+			messages: [
+				{ id: 1, name: "Reginaldo Faria", message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod placeat reprehenderit, veniam nesciunt recusandae quaerat architecto unde magni sint voluptates distinctio excepturi voluptatum autem velit tenetur suscipit? Hic, ratione beatae." },
+				{ id: 2, name: "Neusa Borges", message: "Lorem ipsum dolor sit, amet consectetur adipisicing elit." },
+			],
+			newMessageText: ""
+		},
+		sidebar: {
+			friends: [
+				{ id: 1, name: "Murilo Benício" },
+				{ id: 2, name: "Giovanna Antonelli" },
+				{ id: 3, name: "Vera Fischer" },
+				{ id: 3, name: "Reginaldo Faria" },
+				{ id: 3, name: "Neusa Borges" },
+			],
+		}
 	},
-	dialogsPage: {
-		dialogs: [
-			{ id: 1, name: "Murilo Benício" },
-			{ id: 2, name: "Giovanna Antonelli" },
-			{ id: 3, name: "Vera Fischer" },
-		],
-		messages: [
-			{ id: 1, name: "Reginaldo Faria", message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod placeat reprehenderit, veniam nesciunt recusandae quaerat architecto unde magni sint voluptates distinctio excepturi voluptatum autem velit tenetur suscipit? Hic, ratione beatae." },
-			{ id: 2, name: "Neusa Borges", message: "Lorem ipsum dolor sit, amet consectetur adipisicing elit." },
-		],
-		newMessageText: ""
+	_callSubscriber() {
+		console.log("The state has changed")
 	},
-	sidebar: {
-		friends: [
-			{ id: 1, name: "Murilo Benício" },
-			{ id: 2, name: "Giovanna Antonelli" },
-			{ id: 3, name: "Vera Fischer" },
-			{ id: 3, name: "Reginaldo Faria" },
-			{ id: 3, name: "Neusa Borges" },
-		],
-	}
+
+	getState() {
+		return this._state;
+	},
+	subscribe(observer) {
+		this._callSubscriber = observer;
+	},
+
+	dispatch(action) { // { type: 'ADD-POST' }
+		switch (action.type) {
+			// On Profile page
+			// Add new post
+			case 'ADD-POST':
+				let newPost = {
+					id: 3,
+					messages: this._state.profilePage.newPostText,
+					likesCount: 45
+				}
+
+				this._state.profilePage.posts.push(newPost)
+				this._state.profilePage.newPostText = '';
+				this._callSubscriber(this._state);
+				break
+
+			// Update new post text prop in state 
+			case 'UPDATE-NEW-POST-TEXT':
+				this._state.profilePage.newPostText = action.text;
+				this._callSubscriber(this._state);
+				break
+
+			// On Dialogs page
+			// Add/send new message
+			case 'ADD-MESSAGE':
+				let newMessage = {
+					id: 3,
+					name: "Vera Fischer",
+					message: this._state.dialogsPage.newMessageText
+				}
+
+				this._state.dialogsPage.messages.push(newMessage)
+				this._state.dialogsPage.newMessageText = '';
+				this._callSubscriber(this._state);
+				break
+
+			// Update new message text prop in state 
+			case 'UPDATE-NEW-MESSAGE-TEXT':
+				this._state.dialogsPage.newMessageText = action.text;
+				this._callSubscriber(this._state);
+				break
+		}
+	},
 }
 
-window.state = state;
+export default store;
 
-// On Profile page
-export let addPost = () => {
-	let newPost = {
-		id: 3,
-		messages: state.profilePage.newPostText,
-		likesCount: 45
-	}
-
-	state.profilePage.posts.push(newPost)
-	state.profilePage.newPostText = '';
-	rerenderApp(state);
-}
-export let updateNewPostText = (text) => {
-	state.profilePage.newPostText = text;
-	rerenderApp(state);
-}
-
-// On Dialogs page
-export let addMessage = () => {
-	let newMessage = {
-		id: 3,
-		name: "Vera Fischer",
-		message: state.dialogsPage.newMessageText
-	}
-
-	state.dialogsPage.messages.push(newMessage)
-	state.dialogsPage.newMessageText = '';
-	rerenderApp(state);
-}
-export let updateNewMessageText = (text) => {
-	state.dialogsPage.newMessageText = text;
-	rerenderApp(state);
-}
-
-export default state;
+window.store = store;
