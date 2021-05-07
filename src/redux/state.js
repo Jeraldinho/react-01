@@ -1,3 +1,29 @@
+// Action type names
+const ADD_POST = "ADD_POST"
+const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
+
+const ADD_MESSAGE = "ADD_MESSAGE"
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT"
+
+// Action creators
+// Profile page
+export const addPostActionCreator = () => ({ type: ADD_POST });
+
+export const updateNewPostActionCreator = (text) => ({
+	type: UPDATE_NEW_POST_TEXT,
+	text
+});
+
+// Dialogs page
+export const addMessageActionCreator = () => {
+	return { type: ADD_MESSAGE }
+};
+
+export const apdateNewMessageTextActionCreator = (text) => {
+	return { type: UPDATE_NEW_MESSAGE_TEXT, text }
+};
+
+
 let store = {
 	_state: {
 		profilePage: {
@@ -44,7 +70,7 @@ let store = {
 		switch (action.type) {
 			// On Profile page
 			// Add new post
-			case 'ADD-POST':
+			case ADD_POST:
 				let newPost = {
 					id: 3,
 					messages: this._state.profilePage.newPostText,
@@ -57,14 +83,14 @@ let store = {
 				break
 
 			// Update new post text prop in state 
-			case 'UPDATE-NEW-POST-TEXT':
+			case UPDATE_NEW_POST_TEXT:
 				this._state.profilePage.newPostText = action.text;
 				this._callSubscriber(this._state);
 				break
 
 			// On Dialogs page
 			// Add/send new message
-			case 'ADD-MESSAGE':
+			case ADD_MESSAGE:
 				let newMessage = {
 					id: 3,
 					name: "Vera Fischer",
@@ -77,7 +103,7 @@ let store = {
 				break
 
 			// Update new message text prop in state 
-			case 'UPDATE-NEW-MESSAGE-TEXT':
+			case UPDATE_NEW_MESSAGE_TEXT:
 				this._state.dialogsPage.newMessageText = action.text;
 				this._callSubscriber(this._state);
 				break
