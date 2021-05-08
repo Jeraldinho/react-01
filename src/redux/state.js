@@ -1,28 +1,6 @@
-// Action type names
-const ADD_POST = "ADD_POST"
-const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
-
-const ADD_MESSAGE = "ADD_MESSAGE"
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT"
-
-// Action creators
-// Profile page
-export const addPostActionCreator = () => ({ type: ADD_POST });
-
-export const updateNewPostActionCreator = (text) => ({
-	type: UPDATE_NEW_POST_TEXT,
-	text
-});
-
-// Dialogs page
-export const addMessageActionCreator = () => {
-	return { type: ADD_MESSAGE }
-};
-
-export const apdateNewMessageTextActionCreator = (text) => {
-	return { type: UPDATE_NEW_MESSAGE_TEXT, text }
-};
-
+import dialogsReducer from "./dialogs-reducer";
+import prifileReducer from "./profile-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 let store = {
 	_state: {
@@ -66,48 +44,12 @@ let store = {
 		this._callSubscriber = observer;
 	},
 
-	dispatch(action) { // { type: 'ADD-POST' }
-		switch (action.type) {
-			// On Profile page
-			// Add new post
-			case ADD_POST:
-				let newPost = {
-					id: 3,
-					messages: this._state.profilePage.newPostText,
-					likesCount: 45
-				}
+	dispatch(action) {
+		this._state.profilePage = prifileReducer(this._state.profilePage, action);
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+		this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
-				this._state.profilePage.posts.push(newPost)
-				this._state.profilePage.newPostText = '';
-				this._callSubscriber(this._state);
-				break
-
-			// Update new post text prop in state 
-			case UPDATE_NEW_POST_TEXT:
-				this._state.profilePage.newPostText = action.text;
-				this._callSubscriber(this._state);
-				break
-
-			// On Dialogs page
-			// Add/send new message
-			case ADD_MESSAGE:
-				let newMessage = {
-					id: 3,
-					name: "Vera Fischer",
-					message: this._state.dialogsPage.newMessageText
-				}
-
-				this._state.dialogsPage.messages.push(newMessage)
-				this._state.dialogsPage.newMessageText = '';
-				this._callSubscriber(this._state);
-				break
-
-			// Update new message text prop in state 
-			case UPDATE_NEW_MESSAGE_TEXT:
-				this._state.dialogsPage.newMessageText = action.text;
-				this._callSubscriber(this._state);
-				break
-		}
+		this._callSubscriber(this._state);
 	},
 }
 
