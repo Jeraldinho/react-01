@@ -2,7 +2,15 @@
 const ADD_POST = "ADD_POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
 
-const prifileReducer = (state, action) => {
+let initialState = {
+	posts: [
+		{ id: 1, messages: "First post", likesCount: 14 },
+		{ id: 2, messages: "Second post", likesCount: 20 },
+	],
+	newPostText: ""
+}
+
+const prifileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		// On Profile page
 		// Add new post
