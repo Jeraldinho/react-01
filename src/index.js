@@ -4,15 +4,18 @@ import store from './redux/redux-store'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
+import { Provider } from 'react-redux';
 
 let rerenderApp = (state) => {
 	ReactDOM.render(
 		<React.StrictMode>
-			<App
-				store={store}
-				state={store.getState()}
-				dispatch={store.dispatch.bind(store)}
-			/>
+			<Provider store={store}>
+				<App
+					store={store}
+					state={store.getState()}
+					dispatch={store.dispatch.bind(store)}
+				/>
+			</Provider>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
