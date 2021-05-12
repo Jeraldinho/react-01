@@ -4,7 +4,7 @@ import React from "react";
 
 const MyPosts = (props) => {
 	let postsElements = props.posts.map((post) => (
-		<Post message={post.messages} likesCount={post.likesCount} />
+		<Post message={post.messages} likesCount={post.likesCount} key={post.id} />
 	));
 
 	let postTextarea = React.createRef();

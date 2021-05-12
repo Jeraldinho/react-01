@@ -4,7 +4,7 @@ import "./Sidebar.css";
 
 const Sidebar = (props) => {
 	let friendsElements = props.state.friends.map((friend) => (
-		<Friend name={friend.name} />
+		<Friend name={friend.name} key={friend.id} />
 	));
 
 	return (

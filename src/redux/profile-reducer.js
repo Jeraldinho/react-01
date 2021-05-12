@@ -14,24 +14,23 @@ const prifileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		// On Profile page
 		// Add new post
-		case ADD_POST:
-			let newPost = {
-				id: 3,
-				messages: state.newPostText,
-				likesCount: 45
-			}
+		case ADD_POST: {
+			let newPostText = state.newPostText;
 
-			state.posts.push(newPost)
-			state.newPostText = '';
-
-			return state;
+			return {
+				...state,
+				posts: [...state.posts, { id: 15, messages: newPostText, likesCount: 45 }],
+				newPostText: ''
+			};
+		}
 
 		// Update new post text prop in state 
-		case UPDATE_NEW_POST_TEXT:
-			state.newPostText = action.text;
-
-			return state;
-
+		case UPDATE_NEW_POST_TEXT: {
+			return {
+				...state,
+				newPostText: action.text
+			};
+		}
 		default:
 			return state;
 	}

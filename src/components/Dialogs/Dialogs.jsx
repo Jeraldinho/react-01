@@ -5,10 +5,10 @@ import React from "react";
 
 const Dialogs = (props) => {
 	let dialogsElements = props.dialogs.map((dialog) => (
-		<Dialog name={dialog.name} id={dialog.id} />
+		<Dialog name={dialog.name} key={dialog.id} id={dialog.id} />
 	));
 	let messagesElements = props.messages.map((message) => (
-		<Message name={message.name} message={message.message} />
+		<Message name={message.name} message={message.message} key={message.id} />
 	));
 
 	let messageText = React.createRef();
