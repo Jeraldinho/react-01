@@ -18,6 +18,22 @@
 	overflow-y: auto;
 }
 
+.sidebar::-webkit-scrollbar {
+	width: 7px;
+	background-color: #3f4d63;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+	background-color: #c5d0db;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+	width: 8px;
+	cursor: pointer;
+}
+
 .sidebar__nav-list {
 	margin: 0;
 	padding: 0;

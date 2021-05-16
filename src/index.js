@@ -12,7 +12,7 @@ ReactDOM.render(
 			<App
 				store={store}
 				state={store.getState()}
-				dispatch={store.dispatch.bind(store)}
+				//dispatch={store.dispatch.bind(store)}
 			/>
 		</Provider>
 	</React.StrictMode>,

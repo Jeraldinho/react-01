@@ -35,6 +35,12 @@ const Sidebar = (props) => {
 					</NavLink>
 				</li>
 				<li className="sidebar__nav-list-item">
+					<NavLink to="/users" className="sidebar__link">
+						<i className="mdi mdi-account-multiple"></i>
+						Users
+					</NavLink>
+				</li>
+				<li className="sidebar__nav-list-item">
 					<NavLink to="/settings" className="sidebar__link">
 						<i className="mdi mdi-settings"></i>
 						Settings

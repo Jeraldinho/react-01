@@ -39,9 +39,6 @@ const prifileReducer = (state = initialState, action) => {
 // Action creators
 // Profile page
 export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostActionCreator = (text) => ({
-	type: UPDATE_NEW_POST_TEXT,
-	text
-});
+export const updateNewPostActionCreator = (text) => ( {type: UPDATE_NEW_POST_TEXT, text} );
 
 export default prifileReducer;
