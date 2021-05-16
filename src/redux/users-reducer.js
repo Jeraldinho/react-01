@@ -3,11 +3,12 @@ const FOLLOW = "FOLLOW";
 const SET_USERS = "SET_USERS";
 
 let initialState = {
-	users: [
-		{ id: 1, followed: true, fullName: 'Murilo Benício', status: 'I am ok', location: { city: 'Berlin', country: 'Germany' } },
-		{ id: 2, followed: false, fullName: 'Giovanna Antonelli', status: 'I will be back!!!', location: { city: 'Ontario', country: 'Canada' } },
-		{ id: 3, followed: true, fullName: 'Vera Fischer', status: 'Do not text me!', location: { city: 'New York', country: 'USA' } },
-	],
+	// users: [
+	// 	{ id: 1, followed: true, fullName: 'Murilo Benício', status: 'I am ok', location: { city: 'Berlin', country: 'Germany' } },
+	// 	{ id: 2, followed: false, fullName: 'Giovanna Antonelli', status: 'I will be back!!!', location: { city: 'Ontario', country: 'Canada' } },
+	// 	{ id: 3, followed: true, fullName: 'Vera Fischer', status: 'Do not text me!', location: { city: 'New York', country: 'USA' } },
+	// ],
+	users: [],
 }
 
 const usersReducer = (state = initialState, action) => {
