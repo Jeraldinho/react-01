@@ -1,4 +1,6 @@
 .header {
+	position: fixed;
+    width: 100%;
 	display: grid;
 	align-items: center;
 	grid-area: header;
@@ -6,6 +8,7 @@
 	background: #262f3d;
 	text-align: left;
 	box-shadow: 0 0 2rem 0 rgba(53, 64, 82, 0.3);
+	z-index: 999;
 }
 
 .header__logo {

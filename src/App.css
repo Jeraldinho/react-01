@@ -56,3 +56,7 @@ img {
 	margin-top: 30px;
 	grid-area: content;
 }
+
+.main {
+	margin-top: 65px;
+}

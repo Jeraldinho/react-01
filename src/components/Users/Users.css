@@ -10,12 +10,12 @@
 
 .users__item-inner {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	align-items: flex-start;
 	padding: 15px;
 	background: #fff;
 	border-radius: 10px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .users__item-avatar {
@@ -27,8 +27,8 @@
 
 .users__item-avatar img {
 	display: inline-block;
-	width: 80px;
-	height: 80px;
+	width: 70px;
+	height: 70px;
 	border-radius: 50%;
 	margin-bottom: 10px;
 	border: 3px solid #e4e9fa;
@@ -73,4 +73,62 @@
 	right: 0; */
 	font-size: 11px;
 	color: #ccc;
+}
+
+/* Pagination */
+.pagination {
+	display: block;
+	text-align: center;
+	padding-left: 0;
+	margin: 20px 0;
+}
+
+.pagination__list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.pagination__list > li {
+	display: inline-block;
+}
+
+.pagination__list > li + li {
+	margin-left: 3px;
+}
+
+.pagination__list > li > a,
+.pagination__list > li > span {
+	display: inline-block;
+	position: relative;
+	padding: 0 10px;
+	color: #242424;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #eee;
+	min-width: 40px;
+	border-radius: 5px;
+	line-height: 34px;
+	font-size: 15px;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.pagination__list > li > a:hover,
+.pagination__list > li > a:focus,
+.pagination__list > li > span:hover,
+.pagination__list > li > span:focus {
+	background: #dfdfdf;
+	color: #242424;
+}
+
+.pagination__list > li.active a,
+.pagination__list > li.active span {
+	background: #61dafb;
+	color: #fff;
+}
+
+.pagination__info {
+	font-size: 14px;
+	color: #939393;
 }
