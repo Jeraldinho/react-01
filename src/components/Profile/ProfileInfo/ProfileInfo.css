@@ -1,6 +1,6 @@
 .profile__info {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 }
 
 .avatar {
@@ -12,9 +12,18 @@
 }
 
 .user-info__name {
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 	font-size: 20px;
 	font-weight: 500;
+}
+
+.user-info__status {
+	font-size: 14px;
+    color: #939393;
+    margin-bottom: 15px;
+    border-left: 1px solid #61dafb;
+    background: #61dafb0d;
+    padding: 4px 5px;
 }
 
 .user-info__item span {

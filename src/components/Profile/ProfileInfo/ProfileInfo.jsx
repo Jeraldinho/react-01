@@ -25,10 +25,13 @@ const ProfileInfo = (props) => {
 				<div className=".user-info__item user-info__name">
 					{props.profile.fullName}
 				</div>
+				<div className="user-info__item user-info__status">
+					This is my super status
+				</div>
 				<div className="user-info__item">
 					<span>About me:</span> {props.profile.aboutMe}
 				</div>
-				<div className="user-info__item user-info__birthday">
+				{/* <div className="user-info__item user-info__birthday">
 					<span>Date of Birth:</span> 01.01.1981
 				</div>
 				<div className="user-info__item user-info__birthday">
@@ -39,7 +42,7 @@ const ProfileInfo = (props) => {
 				</div>
 				<div className="user-info__item user-info__website">
 					<span>Web Site:</span> https://microsoft.com
-				</div>
+				</div> */}
 				<div className="user-info__item">
 					<span>Looking for job:</span>{" "}
 					{props.profile.lookingForAJob === true

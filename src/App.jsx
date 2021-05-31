@@ -1,6 +1,5 @@
 import "./App.css";
 import "./css/materialdesignicons.min.css";
-import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import { BrowserRouter, Route } from "react-router-dom";
@@ -9,12 +8,13 @@ import Music from "./components/Music/Music";
 import UsersContainer from "./components/Users/UsersContainer";
 import Settings from "./components/Settings/Settings";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = (props) => {
 	return (
 		<BrowserRouter>
 			<div className="app-wrapper">
-				<Header />
+				<HeaderContainer />
 
 				<main className="main">
 					<div className="container">
