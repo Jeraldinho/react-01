@@ -1,8 +1,35 @@
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 
 const User = (props) => {
 	let onFollowed = () => {
-		props.changeFollow(props.id);
+		if(props.followed) {
+			axios
+			.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
+				withCredentials: true,
+				headers: {
+					"API-KEY": "35d67d20-0965-4f7d-a776-bd398127017a"
+				}
+			})
+			.then((respons) => {
+				if (respons.data.resultCode === 0) {
+					props.changeFollow(props.id);
+				}
+			})
+		} else {
+			axios
+			.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {
+				withCredentials: true,
+				headers: {
+					"API-KEY": "35d67d20-0965-4f7d-a776-bd398127017a"
+				}
+			})
+			.then((respons) => {
+				if (respons.data.resultCode === 0) {
+					props.changeFollow(props.id);
+				}
+			})
+		}
 	};
 
 	return (
@@ -33,8 +60,8 @@ const User = (props) => {
 					<div className="users__item-status">{props.status}</div>
 				</div>
 
-				<button className="users__item-follow" onClick={onFollowed}>
-					{props.followed === true ? "Followed" : "Follow"}
+				<button className={props.followed === true ? 'users__item-follow followed' : 'users__item-follow'} onClick={onFollowed}>
+					{props.followed === true ? <span>Followed <i className="mdi mdi-check"></i></span> : "Follow"}
 				</button>
 			</div>
 		</div>

@@ -50,6 +50,15 @@
 	background: rgb(223, 223, 223);
 }
 
+.users__item-follow.followed {
+	background: #61dafb;
+	color: #fff;
+}
+
+.users__item-follow.followed:hover {
+	background: #57c7e6;
+}
+
 .users__item-text {
 	flex-grow: 1;
 	position: relative;
@@ -67,7 +76,7 @@
 	color: #939393;
 	word-break: break-word;
 	max-height: 50px;
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .users__item-location {
