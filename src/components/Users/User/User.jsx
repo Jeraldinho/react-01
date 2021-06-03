@@ -1,34 +1,27 @@
 import axios from "axios";
 import { NavLink } from "react-router-dom";
+import { usersAPI } from "../../../api/api";
 
 const User = (props) => {
 	let onFollowed = () => {
-		if(props.followed) {
-			axios
-			.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
-				withCredentials: true,
-				headers: {
-					"API-KEY": "35d67d20-0965-4f7d-a776-bd398127017a"
-				}
-			})
-			.then((respons) => {
+		props.toggleFollowingProgress(true, props.id);
+
+		if (props.followed) {
+			usersAPI.unFollow(props.id).then((respons) => {
 				if (respons.data.resultCode === 0) {
 					props.changeFollow(props.id);
 				}
-			})
+
+				props.toggleFollowingProgress(false, props.id)
+			});
 		} else {
-			axios
-			.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {
-				withCredentials: true,
-				headers: {
-					"API-KEY": "35d67d20-0965-4f7d-a776-bd398127017a"
-				}
-			})
-			.then((respons) => {
+			usersAPI.follow(props.id).then((respons) => {
 				if (respons.data.resultCode === 0) {
 					props.changeFollow(props.id);
 				}
-			})
+
+				props.toggleFollowingProgress(false, props.id)
+			});
 		}
 	};
 
@@ -36,7 +29,7 @@ const User = (props) => {
 		<div className="users__item">
 			<div className="users__item-inner">
 				<div className="users__item-avatar">
-					<NavLink to={'/profile/' + props.id}>
+					<NavLink to={"/profile/" + props.id}>
 						<img
 							src={
 								props.avatar !== null
@@ -56,12 +49,32 @@ const User = (props) => {
 				</div>
 
 				<div className="users__item-text">
-					<div className="users__item-name">{props.fullName}</div>
+					<NavLink to={"/profile/" + props.id} className="users__item-name">
+						{props.fullName}
+					</NavLink>
 					<div className="users__item-status">{props.status}</div>
 				</div>
 
-				<button className={props.followed === true ? 'users__item-follow followed' : 'users__item-follow'} onClick={onFollowed}>
-					{props.followed === true ? <span>Followed <i className="mdi mdi-check"></i></span> : "Follow"}
+				<div className="users__item-id">
+					# {props.id}
+				</div>
+
+				<button
+					className={
+						props.followed === true
+							? "users__item-follow followed"
+							: "users__item-follow"
+					}
+					onClick={onFollowed}
+					disabled={props.followingInProgress.some(id => id === props.id)}
+				>
+					{props.followed === true ? (
+						<span>
+							Followed <i className="mdi mdi-check"></i>
+						</span>
+					) : (
+						"Follow"
+					)}
 				</button>
 			</div>
 		</div>

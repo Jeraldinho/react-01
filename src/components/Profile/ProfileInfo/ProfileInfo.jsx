@@ -9,16 +9,14 @@ const ProfileInfo = (props) => {
 	return (
 		<div className="profile__info">
 			<div className="avatar">
-				<a href="">
-					<img
-						src={
-							props.profile.photos.large !== null
-								? props.profile.photos.large
-								: "https://via.placeholder.com/250x300"
-						}
-						alt="ava"
-					/>
-				</a>
+				<img
+					src={
+						props.profile.photos.large !== null
+							? props.profile.photos.large
+							: "https://via.placeholder.com/250x300"
+					}
+					alt="ava"
+				/>
 			</div>
 
 			<div className="user-info">

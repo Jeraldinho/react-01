@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as axios from "axios";
 import Profile from "./Profile";
 import {
 	toggleIsFetchingAC,
@@ -8,6 +7,7 @@ import {
 } from "../../redux/profile-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import { withRouter } from "react-router-dom";
+import { profileAPI } from "../../api/api";
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
@@ -18,14 +18,11 @@ class ProfileContainer extends React.Component {
 			userId = 2;
 		}
 
-		axios
-			.get(
-				`https://social-network.samuraijs.com/api/1.0/profile/` + userId
-			)
-			.then((respons) => {
-				this.props.toggleIsFetching(false);
-				this.props.setUserProfile(respons.data);
-			});
+		profileAPI.getProfileInfo(userId)
+		.then((respons) => {
+			this.props.toggleIsFetching(false);
+			this.props.setUserProfile(respons.data);
+		});
 	}
 
 	render() {
@@ -58,4 +55,7 @@ let mapDispatchToProps = (dispatch) => {
 
 let withUrlDataContainerComponent = withRouter(ProfileContainer);
 
-export default connect(mapStateToProps, mapDispatchToProps)(withUrlDataContainerComponent);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withUrlDataContainerComponent);
