@@ -24,6 +24,16 @@ const Header = (props) => {
 								className="header__login-avatar"
 								alt="avatar"
 							/>
+
+							<i className="mdi mdi-chevron-down"></i>
+
+							<div className="header__login-dropdown-menu">
+								<a href="">
+									Sign out
+
+									<i className="mdi mdi-logout"></i>
+								</a>
+							</div>
 						</div>
 					) : (
 						<NavLink to={"/login"} className="header__login-link">

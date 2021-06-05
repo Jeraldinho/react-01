@@ -5,7 +5,7 @@ const ProfileInfo = (props) => {
 	if (!props.profile) {
 		return <Preloader />;
 	}
-
+	
 	return (
 		<div className="profile__info">
 			<div className="avatar">
@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
 					{props.profile.fullName}
 				</div>
 				<div className="user-info__item user-info__status">
-					This is my super status
+				{props.status ? props.status : 'Set status'}
 				</div>
 				<div className="user-info__item">
 					<span>About me:</span> {props.profile.aboutMe}

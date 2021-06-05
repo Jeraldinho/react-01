@@ -1,3 +1,5 @@
+import { authAPI, profileAPI } from "../api/api";
+
 // Action type names
 const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
@@ -38,5 +40,23 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUsersData = (id, login, email) => ({ type: SET_AUTH_USER_DATA, data: { id, login, email } });
 export const setAuthUserPhoto = (photo) => ({ type: SET_AUTH_USER_PHOTO, photo });
 export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+
+export const getAuthUserDataThunkCreator = () => {
+	return (dispatch) => {
+		authAPI.authMe()
+			.then((respons) => {
+				let { id, login, email } = respons.data.data;
+
+				if (respons.data.resultCode === 0) {
+					dispatch(setAuthUsersData(id, login, email));
+				}
+
+				return profileAPI.getProfileInfo(id);
+			})
+			.then((respons) => {
+				dispatch(setAuthUserPhoto(respons.data.photos.small));
+			});
+	}
+}
 
 export default authReducer;

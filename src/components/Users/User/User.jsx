@@ -4,25 +4,7 @@ import { usersAPI } from "../../../api/api";
 
 const User = (props) => {
 	let onFollowed = () => {
-		props.toggleFollowingProgress(true, props.id);
-
-		if (props.followed) {
-			usersAPI.unFollow(props.id).then((respons) => {
-				if (respons.data.resultCode === 0) {
-					props.changeFollow(props.id);
-				}
-
-				props.toggleFollowingProgress(false, props.id)
-			});
-		} else {
-			usersAPI.follow(props.id).then((respons) => {
-				if (respons.data.resultCode === 0) {
-					props.changeFollow(props.id);
-				}
-
-				props.toggleFollowingProgress(false, props.id)
-			});
-		}
+		props.changeFollow(props.followed, props.id);
 	};
 
 	return (

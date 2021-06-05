@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 // Action type names
 const FOLLOW = "FOLLOW";
 const SET_USERS = "SET_USERS";
@@ -31,11 +33,11 @@ const usersReducer = (state = initialState, action) => {
 
 		case TOGGLE_FOLLOWING_PROGRESS:
 			console.log(action.userId)
-			return { 
+			return {
 				...state,
-				followingInProgress: action.isFetching 
-				?  [...state.followingInProgress, action.userId]
-				: state.followingInProgress.filter(id => id != action.userId)
+				followingInProgress: action.isFetching
+					? [...state.followingInProgress, action.userId]
+					: state.followingInProgress.filter(id => id != action.userId)
 			}
 
 		case SET_USERS:
@@ -57,11 +59,60 @@ const usersReducer = (state = initialState, action) => {
 
 // Action creators
 // Users page
-export const usersFollowAC = (userId) => ({ type: FOLLOW, userId });
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
-export const setCurrentPageAC = (pageNumber) => ({ type: SET_CURRENT_PAGE, pageNumber });
-export const setUsersTotalCountAC = (usersTotalCount) => ({ type: SET_USERS_TOTAL_COUNT, usersTotalCount });
-export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+export const usersFollow = (userId) => ({ type: FOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (pageNumber) => ({ type: SET_CURRENT_PAGE, pageNumber });
+export const setUsersTotalCount = (usersTotalCount) => ({ type: SET_USERS_TOTAL_COUNT, usersTotalCount });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userId });
+
+
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+	return (dispatch) => {
+		dispatch(toggleIsFetching(true));
+
+		usersAPI.getUsers(currentPage, pageSize).then((respons) => {
+			dispatch(toggleIsFetching(false));
+			dispatch(setUsers(respons.items));
+			dispatch(setUsersTotalCount(respons.totalCount));
+		});
+	}
+}
+
+export const setCurrentPageThunkCreator = (pageNumber, pageSize) => {
+	return (dispatch) => {
+		dispatch(toggleIsFetching(true));
+		dispatch(setCurrentPage(pageNumber));
+
+		usersAPI.getUsers(pageNumber, pageSize).then((respons) => {
+			dispatch(toggleIsFetching(false));
+			dispatch(setUsers(respons.items));
+		});
+	}
+}
+
+export const followThunkCreator = (isFetching, userId) => {
+	return (dispatch) => {
+		dispatch(toggleFollowingProgress(true, userId));
+
+		if (isFetching) {
+			usersAPI.unFollow(userId).then((respons) => {
+				if (respons.data.resultCode === 0) {
+					dispatch(usersFollow(userId));
+				}
+
+				dispatch(toggleFollowingProgress(false, userId));
+			});
+		} else {
+			usersAPI.follow(userId).then((respons) => {
+				if (respons.data.resultCode === 0) {
+					dispatch(usersFollow(userId));
+				}
+
+				dispatch(toggleFollowingProgress(false, userId));
+			});
+		}
+	}
+}
 
 export default usersReducer;
