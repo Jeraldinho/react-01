@@ -1,7 +1,10 @@
 import Preloader from "../../common/Preloader/Preloader";
 import "./ProfileInfo.css";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
+
+
 	if (!props.profile) {
 		return <Preloader />;
 	}
@@ -23,9 +26,7 @@ const ProfileInfo = (props) => {
 				<div className=".user-info__item user-info__name">
 					{props.profile.fullName}
 				</div>
-				<div className="user-info__item user-info__status">
-				{props.status ? props.status : 'Set status'}
-				</div>
+				<ProfileStatus status={props.status} />
 				<div className="user-info__item">
 					<span>About me:</span> {props.profile.aboutMe}
 				</div>

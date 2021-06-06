@@ -22,12 +22,42 @@
 }
 
 .user-info__status {
+	position: relative;
+	min-height: 25px;
 	font-size: 14px;
-    color: #939393;
-    margin-bottom: 15px;
-    border-left: 1px solid #61dafb;
-    background: #61dafb0d;
-    padding: 4px 8px;
+	color: #939393;
+	margin-bottom: 15px;
+	border-left: 1px solid transparent;
+	background: transparent;
+	padding: 4px 8px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.user-info__status:hover {
+	border-left: 1px solid #61dafb;
+	background: #eff7fc;
+}
+
+.user-info__status-edit {
+	position: absolute;
+	top: 0;
+	left: -1px;
+	width: 100%;
+	height: 100%;
+	padding: 4px 8px;
+	border: none;
+	border-left: 1px solid #61dafb;
+	border-radius: 0;
+	background: #eff7fc;
+	outline: none;
+	font-size: inherit;
+	font-family: inherit;
+	color: #464646;
+}
+
+.user-info__status-edit:focus {
+
 }
 
 .user-info__item span {
