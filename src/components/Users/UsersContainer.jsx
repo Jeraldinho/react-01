@@ -12,6 +12,7 @@ import Users from "./Users";
 import User from "./User/User";
 import Preloader from "../common/Preloader/Preloader";
 import { withAuthRedirect } from "../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 class UsersContainer extends React.Component {
 	createUsersElements = () => {
@@ -102,36 +103,14 @@ let mapStateToProps = (state) => {
 	};
 };
 
-/* let mapDispatchToProps = (dispatch) => {
-	return {
-		followThunk: (isFetching, userId) => {
-			dispatch(followThunkCreator(isFetching, userId));
-		},
-		setUsers: (users) => {
-			dispatch(setUsers(users));
-		},
-		setUsersTotalCount: (usersTotalCount) => {
-			dispatch(setUsersTotalCount(usersTotalCount));
-		},
-		setCurrentPage: (pageNumber) => {
-			dispatch(setCurrentPage(pageNumber));
-		},
-		toggleIsFetching: (isFetching) => {
-			dispatch(toggleIsFetching(isFetching));
-		},
-		getUsersThunk: (currentPage, pageSize) => {
-			dispatch(getUsersThunkCreator(currentPage, pageSize));
-		}
-	};
-}; */
-
-let withAuthRedirectUsersContainer = withAuthRedirect(UsersContainer);
-
-export default connect(mapStateToProps, {
-	followThunkCreator,
-	setUsers,
-	setUsersTotalCount,
-	setCurrentPage,
-	getUsersThunkCreator,
-	setCurrentPageThunkCreator,
-})(withAuthRedirectUsersContainer);
+export default compose(
+	connect(mapStateToProps, {
+		followThunkCreator,
+		setUsers,
+		setUsersTotalCount,
+		setCurrentPage,
+		getUsersThunkCreator,
+		setCurrentPageThunkCreator,
+	}),
+	withAuthRedirect
+)(UsersContainer);

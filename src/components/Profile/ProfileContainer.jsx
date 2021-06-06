@@ -1,10 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
 import Profile from "./Profile";
 import { getProfileInfoThunkCreator } from "../../redux/profile-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import { withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../hoc/withAuthRedirect";
+import { compose } from "redux";
+import { connect } from "react-redux";
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
@@ -31,8 +32,6 @@ class ProfileContainer extends React.Component {
 	}
 }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-
 let mapStateToProps = (state) => {
 	return {
 		isFetching: state.usersPage.isFetching,
@@ -41,6 +40,8 @@ let mapStateToProps = (state) => {
 	};
 };
 
-let withUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-
-export default connect(mapStateToProps, { getProfileInfoThunkCreator })(withUrlDataContainerComponent);
+export default compose(
+	connect(mapStateToProps, { getProfileInfoThunkCreator }),
+	withRouter,
+	withAuthRedirect
+)(ProfileContainer);
