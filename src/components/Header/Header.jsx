@@ -6,7 +6,7 @@ const Header = (props) => {
 	return (
 		<header className="header">
 			<div className="container">
-				<a href="" className="header__logo">
+				<a href="/" className="header__logo">
 					<img src="./../logo.svg" alt="Logo" />
 					ReactApp
 				</a>
@@ -28,7 +28,7 @@ const Header = (props) => {
 							<i className="mdi mdi-chevron-down"></i>
 
 							<div className="header__login-dropdown-menu">
-								<a href="">
+								<a href="/login">
 									Sign out
 
 									<i className="mdi mdi-logout"></i>

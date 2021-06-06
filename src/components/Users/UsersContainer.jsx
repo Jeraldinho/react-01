@@ -11,6 +11,7 @@ import {
 import Users from "./Users";
 import User from "./User/User";
 import Preloader from "../common/Preloader/Preloader";
+import { withAuthRedirect } from "../hoc/withAuthRedirect";
 
 class UsersContainer extends React.Component {
 	createUsersElements = () => {
@@ -124,6 +125,8 @@ let mapStateToProps = (state) => {
 	};
 }; */
 
+let withAuthRedirectUsersContainer = withAuthRedirect(UsersContainer);
+
 export default connect(mapStateToProps, {
 	followThunkCreator,
 	setUsers,
@@ -131,4 +134,4 @@ export default connect(mapStateToProps, {
 	setCurrentPage,
 	getUsersThunkCreator,
 	setCurrentPageThunkCreator,
-})(UsersContainer);
+})(withAuthRedirectUsersContainer);

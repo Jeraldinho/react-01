@@ -97,7 +97,7 @@
 	visibility: hidden;
     opacity: 0;
 	background: #ffffff;
-	padding: 20px 0;
+	padding: 15px 0;
 	border-radius: 4px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
@@ -109,7 +109,7 @@
 .header__login-dropdown-menu a {
 	display: block;
 	font-size: 14px;
-	padding: 5px 15px;
+	padding: 7px 15px;
 	background: #fff;
 	color: #000;
 	text-decoration: none;

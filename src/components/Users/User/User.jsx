@@ -1,6 +1,4 @@
-import axios from "axios";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../../api/api";
 
 const User = (props) => {
 	let onFollowed = () => {
